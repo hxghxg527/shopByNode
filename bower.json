@@ -1,0 +1,23 @@
+{
+  "name": "html5poc",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "hxghxg527 <hxghxg527@163.com>"
+  ],
+  "license": "ISC",
+  "moduleType": [],
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "src/lib-bower",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.1.0"
+  }
+}
