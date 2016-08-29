@@ -1,5 +1,5 @@
 {
-  "name": "html5poc",
+  "name": "shopByNode",
   "description": "",
   "main": "index.js",
   "authors": [
@@ -13,7 +13,7 @@
     "**/.*",
     "node_modules",
     "bower_components",
-    "src/lib-bower",
+    "public/lib-bower",
     "test",
     "tests"
   ],
