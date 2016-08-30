@@ -10,7 +10,11 @@ module.exports = function (app) {
             password = req.body.password;
 
         Users.findOne({name: username}, function (err, user) {
-            if (user) {
+            if (err) {
+                req.session.error = "network exception.";
+                res.sendStatus(500);
+            } else if (user) {
+                req.session.error = "user is exist.";
                 res.sendStatus(403);
             } else {
                 Users.create({
@@ -18,8 +22,10 @@ module.exports = function (app) {
                     password: password
                 }, function (err) {
                     if (err) {
+                        req.session.error = "user is created failed.";
                         res.sendStatus(500);
                     } else {
+                        req.session.error = "user is created success.";
                         res.status(200).send('success!!');
                     }
                 });
