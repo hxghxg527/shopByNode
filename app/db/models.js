@@ -10,7 +10,7 @@ module.exports = {
         },
         gender: {
             type: String,
-            required: true
+            default: "m"
         },
         isAdult: {
             type: Boolean,
