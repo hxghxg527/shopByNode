@@ -3,10 +3,10 @@ module.exports = function (app) {
         res.render('register');
     });
 
+    // add user.
     app.post('/register', function (req, res) {
-        var Users = global.dbHelper.getModel('users');
-
-        var username = req.body.username,
+        var Users = global.dbHelper.getModel('users'),
+            username = req.body.username,
             password = req.body.password;
 
         Users.findOne({name: username}, function (err, user) {

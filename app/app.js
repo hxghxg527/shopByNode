@@ -22,11 +22,7 @@ app.set('views', path.join(__dirname, 'views'));
 // use static files.
 app.use(express.static(path.join(__dirname, '../public')));
 
-// app.get('/', function (req, res) {
-//     res.render('register');
-// });
-
-require('./routes/register')(app);
+require('./routes')(app);
 
 app.listen('8080', '127.0.0.1', function () {
     console.log('监听 8080 端口成功...');
