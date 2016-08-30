@@ -1,10 +1,15 @@
 function register() {
-    var registerContainer = $('.register-container');
-    var uname = registerContainer.find('.uname').val();
-    var upwd = registerContainer.find('.upwd').val();
-    var upwdConfirm = registerContainer.find('.upwd-confirm').val();
+    var registerContainer = $('.register-container'),
+        uname = registerContainer.find('.uname').val().trim(),
+        upwd = registerContainer.find('.upwd').val().trim(),
+        upwdConfirm = registerContainer.find('.upwd-confirm').val().trim();
 
-    if (upwd != upwdConfirm) {
+    if (uname == '' || upwd == '' || upwd != upwdConfirm) {
+        $('.wrong-message').show();
+        return;
+    }
+
+    if (!(/^[a-z0-9]*$/gi.test(uname))) {
         $('.wrong-message').show();
         return;
     }
