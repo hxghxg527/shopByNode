@@ -59,7 +59,8 @@ function login() {
         data: data
     }).then(function (data) {
         console.log('login user success:');
-        console.log(data.name);
+        console.log(data);
+        location.href = 'home';
     }, function (err) {
         location.href = 'login';
     });

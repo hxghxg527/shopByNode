@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <link type="text/css" rel="stylesheet" href="css/common.css">
+    <script type="text/javascript" src="scripts/lib.js"></script>
+    <script type="text/javascript" src="scripts/common.js"></script>
+</head>
+<body>
+<div class="home-container">
+    HOME
+    <ul>
+        <% for(var idx=0; idx<commodity.length ; idx++) { var item = commodity[idx]; %>
+
+            <li>
+                <div>
+                    <img width="100px" height="100px" src="<%= item.imgSrc %>">
+                </div>
+                <div>
+                    <a><%= item.name %></a>
+                    <strong>$<%= item.price %></strong>
+                </div>
+                <div>
+                    <a href="#">加入购物车</a>
+                </div>
+            </li>
+        <%}%>
+    </ul>
+</div>
+</body>
+</html>
