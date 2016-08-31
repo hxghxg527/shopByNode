@@ -29,7 +29,12 @@ function register() {
     }).then(function (data) {
         //alert('注册成功!');
         console.log(data);
-    }, function () {
-        alert('注册失败!');
+    }, function (err) {
+        if (err.status == 403) {
+            alert('该用户已经被注册!');
+        } else {
+            alert('注册用户失败!');
+        }
+
     });
 }

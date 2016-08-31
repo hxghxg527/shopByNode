@@ -8,9 +8,11 @@ var express = require('express'),
     bodyParser = require('body-parser'),
     multer = require('multer');
 
+// operate database.
 require('./db/dbConnection')();
 global.dbHelper = require('./db/dbHelper');
 
+// for params formatted.
 app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({extended: false})); // for parsing application/x-www-form-urlencoded
 //app.use(multer()); // for parsing multipart/form-data
@@ -32,6 +34,7 @@ app.use(session({
     }
 }));
 
+// save session message to response locals.
 app.use(function (req, res, next) {
     res.locals.user = req.session.user;
     var error = req.session.error;
@@ -44,8 +47,10 @@ app.use(function (req, res, next) {
     next();
 });
 
+// init routes.
 require('./routes')(app);
 
+// start server.
 app.listen('8080', '127.0.0.1', function () {
     console.log('监听 8080 端口成功...');
 });

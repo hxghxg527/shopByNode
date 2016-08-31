@@ -12,21 +12,21 @@ module.exports = function (app) {
         Users.findOne({name: username}, function (err, user) {
             if (err) {
                 req.session.error = "network exception.";
-                res.sendStatus(500);
+                res.status(500).send('network exception.');
             } else if (user) {
                 req.session.error = "user is exist.";
-                res.sendStatus(403);
+                res.status(403).send('user is exist.');
             } else {
                 Users.create({
                     name: username,
                     password: password
                 }, function (err) {
                     if (err) {
-                        req.session.error = "user is created failed.";
-                        res.sendStatus(500);
+                        req.session.error = "user was created failed.";
+                        res.status(500).send('user was created failed.');
                     } else {
-                        req.session.error = "user is created success.";
-                        res.status(200).send('success!!');
+                        req.session.error = "user was created success.";
+                        res.status(200).send('user was created success.');
                     }
                 });
             }
