@@ -31,9 +31,9 @@ function register() {
         console.log(data);
     }, function (err) {
         if (err.status == 403) {
-            alert('该用户已经被注册!');
+            location.href = 'register';
         } else {
-            alert('注册用户失败!');
+            location.href = 'register';
         }
 
     });

@@ -2,15 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Register</title>
+    <title>Login</title>
     <link type="text/css" rel="stylesheet" href="css/common.css">
     <script type="text/javascript" src="scripts/lib.js"></script>
     <script type="text/javascript" src="scripts/common.js"></script>
 </head>
 <body>
-<div class="register-container">
+<div class="login-container">
     <ul>
-        <li>用户注册</li>
+        <li>用户登录</li>
         <li class="wrong-message">输入的信息不符合要求</li>
         <li><%- message %></li>
         <li>
@@ -20,13 +20,10 @@
             <input class="upwd" type="password" placeholder="密码" value="123">
         </li>
         <li>
-            <input class="upwd-confirm" type="password" placeholder="确认密码" value="123">
+            <a href="javascript:void(0);" onclick="login();">登录</a>
         </li>
         <li>
-            <a href="javascript:void(0);" onclick="register();">注册</a>
-        </li>
-        <li>
-            <a href="login">登录</a>
+            <a href="register">注册</a>
         </li>
     </ul>
 </div>

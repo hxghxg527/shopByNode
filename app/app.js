@@ -37,11 +37,11 @@ app.use(session({
 // save session message to response locals.
 app.use(function (req, res, next) {
     res.locals.user = req.session.user;
-    var error = req.session.error;
-    res.locals.message = '';
 
-    if (error) {
-        res.locals.message = "<div class='error-message'>" + error + "</div>";
+    if (req.session.error) {
+        res.locals.message = "<div class='error-message'>" + req.session.error + "</div>";
+    } else {
+        res.locals.message = '';
     }
 
     next();
