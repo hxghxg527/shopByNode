@@ -36,6 +36,7 @@ app.use(session({
 
 // save session message to response locals.
 app.use(function (req, res, next) {
+    console.log('use middleware...');
     res.locals.user = req.session.user;
 
     if (req.session.error) {

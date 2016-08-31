@@ -27,14 +27,40 @@ function register() {
         },
         data: data
     }).then(function (data) {
-        //alert('注册成功!');
+        console.log('register user success:');
         console.log(data);
+        location.href = 'login';
     }, function (err) {
-        if (err.status == 403) {
-            location.href = 'register';
-        } else {
-            location.href = 'register';
-        }
+        location.href = 'register';
+    });
+}
 
+function login() {
+    var loginContainer = $('.login-container'),
+        uname = loginContainer.find('.uname').val().trim(),
+        upwd = loginContainer.find('.upwd').val().trim();
+
+    if (uname == '' || upwd == '') {
+        $('.wrong-message').show();
+        return;
+    }
+
+    var data = {
+        "username": uname,
+        "password": upwd
+    };
+
+    $.ajax({
+        type: "POST",
+        url: "/login",
+        header: {
+            "Content-Type": "application/json"
+        },
+        data: data
+    }).then(function (data) {
+        console.log('login user success:');
+        console.log(data.name);
+    }, function (err) {
+        location.href = 'login';
     });
 }

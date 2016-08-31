@@ -9,11 +9,13 @@ module.exports = function (app) {
             username = req.body.username,
             password = req.body.password;
 
-        Users.findOne({name: username}, function (err, user) {
+        console.log('register user...');
+
+        Users.findOne({name: username}, function (err, docs) {
             if (err) {
                 req.session.error = "network exception.";
                 res.status(500).send('network exception.');
-            } else if (user) {
+            } else if (docs) {
                 req.session.error = "user is exist.";
                 res.status(403).send('user is exist.');
             } else {
