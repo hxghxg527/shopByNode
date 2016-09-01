@@ -30,7 +30,7 @@ app.use(session({
     saveUninitialized: false, // don't create session until something stored
     secret: 'secret',
     cookie: {
-        maxAge: 1000 * 60 * 30
+        maxAge: 1000 * 60 * 60 * 5
     }
 }));
 
