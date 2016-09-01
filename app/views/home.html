@@ -13,8 +13,8 @@
         <div style="margin: 10px 0;">商品展示页</div>
         <div style="margin: 10px 0;">
             <a href="addCommodity">添加商品</a>
-            <a href="#">购物车</a>
-            <a href="#">退出</a>
+            <a href="cart">购物车</a>
+            <a href="logout">退出</a>
         </div>
     </div>
     <ul>
@@ -30,7 +30,7 @@
             </div>
             <div>$<%= item.price %></div>
             <div>
-                <a href="/addToCart/<%= item._id %>">加入购物车</a>
+                <a href="addToCart/<%= item._id %>">加入购物车</a>
             </div>
         </li>
         <%}%>
