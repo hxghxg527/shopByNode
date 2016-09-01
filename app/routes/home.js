@@ -4,7 +4,7 @@ module.exports = function (app) {
             var Commodity = global.dbHelper.getModel('commodity');
 
             Commodity.find({}, function (err, docs) {
-                res.render('home', {commodity: docs});
+                res.render('home', {commoditys: docs});
             });
         } else {
             res.redirect('login');

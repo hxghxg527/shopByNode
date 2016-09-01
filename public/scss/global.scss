@@ -9,7 +9,31 @@ ul, li {
   display: block;
 }
 
-
 .wrong-message {
   display: none;
+}
+
+li {
+  margin: 10px 0;
+}
+
+.home-container ul {
+  width: 1024px;
+  margin: auto;
+  text-align: left;
+}
+
+.home-container ul li {
+  display: block;
+  width: 130px;
+  height: 190px;
+  border: 1px solid #ccc;
+  float: left;
+  margin: 10px 20px;
+  text-align: center;
+  padding: 5px;
+}
+
+.home-container ul li>div {
+  margin: 5px;
 }

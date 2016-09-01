@@ -65,3 +65,35 @@ function login() {
         location.href = 'login';
     });
 }
+
+function addCommodity() {
+    var loginContainer = $('.add-commodity-container'),
+        commodityName = loginContainer.find('.commodity-name').val().trim(),
+        commodityPrice = loginContainer.find('.commodity-price').val().trim();
+
+    if (commodityName == '' || commodityPrice == '') {
+        $('.wrong-message').show();
+        return;
+    }
+
+    var data = {
+        "commodityName": commodityName,
+        "commodityPrice": commodityPrice
+    };
+
+    $.ajax({
+        type: "POST",
+        url: "/addCommodity",
+        header: {
+            "Content-Type": "application/json"
+        },
+        data: data
+    }).then(function (data) {
+        console.log('add commodity success:');
+        console.log(data);
+        alert('add commodity success...');
+    }, function (err) {
+        alert('add commodity failed...');
+        location.href = 'addCommodity';
+    });
+}

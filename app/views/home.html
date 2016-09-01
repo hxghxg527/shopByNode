@@ -9,22 +9,30 @@
 </head>
 <body>
 <div class="home-container">
-    HOME
+    <div>
+        <div style="margin: 10px 0;">商品展示页</div>
+        <div style="margin: 10px 0;">
+            <a href="addCommodity">添加商品</a>
+            <a href="#">购物车</a>
+            <a href="#">退出</a>
+        </div>
+    </div>
     <ul>
-        <% for(var idx=0; idx<commodity.length ; idx++) { var item = commodity[idx]; %>
+        <% for(var idx = 0; idx
+        < commoditys.length ; idx++) { var item = commoditys[idx]; %>
 
-            <li>
-                <div>
-                    <img width="100px" height="100px" src="<%= item.imgSrc %>">
-                </div>
-                <div>
-                    <a><%= item.name %></a>
-                    <strong>$<%= item.price %></strong>
-                </div>
-                <div>
-                    <a href="#">加入购物车</a>
-                </div>
-            </li>
+        <li>
+            <div>
+                <img width="100px" height="100px" src="images/<%= item.imgSrc %>">
+            </div>
+            <div>
+                <%= item.name %>
+            </div>
+            <div>$<%= item.price %></div>
+            <div>
+                <a href="#">加入购物车</a>
+            </div>
+        </li>
         <%}%>
     </ul>
 </div>
