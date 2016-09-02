@@ -25,16 +25,16 @@
             <td>操作</td>
         </tr>
         <% for (var idx=0; idx < carts.length; idx++) { var cartItem = carts[idx]; %>
-        <tr>
+        <tr class="cart-tr-item">
             <td><input class="checkbox-item" name="checkboxItem" type="checkbox"></td>
             <td>
                 <img class="cart-img" src="images/<%= cartItem.cImgSrc %>">
                 <span class="cart-name"><%= cartItem.cName %></span>
             </td>
-            <td>$<%= cartItem.cPrice %></td>
+            <td>$<span class="cart-td-price"><%= cartItem.cPrice %></span></td>
             <td>
                 <a href="#">+</a>
-                <input type="text" value="<%= cartItem.cQuantity %>">
+                <input class="cart-td-quantity" type="text" value="<%= cartItem.cQuantity %>">
                 <a href="#">-</a>
             </td>
             <td><a href="#">删除</a></td>
@@ -43,7 +43,7 @@
     </table>
     <div class="cart-result">
         <div>
-            总计: <span>$0.00</span>
+            总计: $<span class="cart-result-total-price">0.00</span>
         </div>
         <br>
         <a href="#">结算</a>

@@ -103,15 +103,68 @@ function addCommodity() {
         checkboxItem = $('.checkbox-item');
 
     cartSelectAll.on('click', function () {
-        var checkedValue = $(this).attr('checked');
+        var checkedValue = $(this).prop('checked');
 
-        console.log(checkedValue);
-        if (checkedValue == 'checked') {
-            $(this).attr('checked', false);
-            checkboxItem.attr('checked', false);
+        if (checkedValue) {
+            checkboxItem.prop('checked', true);
         } else {
-            $(this).attr('checked', true);
-            checkboxItem.attr('checked', true);
+            checkboxItem.prop('checked', false);
         }
+
+        calculateTotalPrice();
     });
+
+    checkboxItem.on('click', function () {
+        var checkedValue = $(this).prop('checked');
+
+        if (checkedValue) {
+            var selectedCheckbox = $('.checkbox-item:checked');
+
+            if (selectedCheckbox.length == checkboxItem.length) {
+                cartSelectAll.prop('checked', true);
+            }
+        } else {
+            cartSelectAll.prop('checked', false);
+        }
+
+        calculateTotalPrice();
+    });
+
+    function calculateTotalPrice() {
+        var selectedTr = $('.checkbox-item:checked').parents('.cart-tr-item');
+        var totalPrice = 0;
+
+        $.each(selectedTr, function (idx) {
+            var _price = $(this).find('.cart-td-price').text();
+            var _quantity = $(this).find('.cart-td-quantity').val();
+
+            totalPrice += _price * _quantity;
+        });
+
+        if (/(\.[0-9]{1})$/g.test(totalPrice)) {
+            totalPrice += '0';
+        } else if (!/(\.[0-9]{2})$/g.test(totalPrice)) {
+            totalPrice += '.00';
+        }
+        $('.cart-result-total-price').text(totalPrice);
+    }
 })();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
