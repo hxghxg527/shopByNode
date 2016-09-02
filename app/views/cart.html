@@ -16,7 +16,7 @@
     <table>
         <tr>
             <td>
-                <input class="cart-select-all" type="checkbox">
+                <input class="cart-select-all" type="checkbox" name="selectAll" value="">
                 <span>全选</span>
             </td>
             <td>商品名称</td>
@@ -26,7 +26,7 @@
         </tr>
         <% for (var idx=0; idx < carts.length; idx++) { var cartItem = carts[idx]; %>
         <tr>
-            <td><input class="checkbox-item" type="checkbox"></td>
+            <td><input class="checkbox-item" name="checkboxItem" type="checkbox"></td>
             <td>
                 <img class="cart-img" src="images/<%= cartItem.cImgSrc %>">
                 <span class="cart-name"><%= cartItem.cName %></span>

@@ -97,3 +97,21 @@ function addCommodity() {
         location.href = 'addCommodity';
     });
 }
+
+(function () {
+    var cartSelectAll = $('.cart-select-all'),
+        checkboxItem = $('.checkbox-item');
+
+    cartSelectAll.on('click', function () {
+        var checkedValue = $(this).attr('checked');
+
+        console.log(checkedValue);
+        if (checkedValue == 'checked') {
+            $(this).attr('checked', false);
+            checkboxItem.attr('checked', false);
+        } else {
+            $(this).attr('checked', true);
+            checkboxItem.attr('checked', true);
+        }
+    });
+})();
