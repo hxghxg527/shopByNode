@@ -34,6 +34,36 @@ li {
   padding: 5px;
 }
 
-.home-container ul li>div {
+.home-container ul li > div {
   margin: 5px;
+}
+
+.cart-container table {
+  text-align: left;
+  width: 100%;
+}
+
+.cart-container table a {
+  text-decoration: none;
+}
+
+.cart-container table tr td {
+  padding: 0 20px;
+}
+
+.cart-container table tr td .cart-img {
+  width: 40px;
+  height: 40px;
+}
+
+.cart-container table tr td .cart-name {
+  height: 40px;
+  display: inline-block;
+  line-height: 40px;
+  vertical-align: top;
+}
+
+.cart-container .cart-result {
+  text-align: right;
+  padding: 10px 150px;
 }

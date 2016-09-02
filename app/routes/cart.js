@@ -1,6 +1,23 @@
 module.exports = function (app) {
     app.get('/cart', function (req, res) {
-        res.render('cart');
+        if (!req.session.user) {
+            res.redirect('/');
+            return;
+        } else {
+            var Cart = global.dbHelper.getModel('cart'),
+                uid = req.session.user._id;
+
+            Cart.find({
+                uId: uid,
+                cStatus: false
+            }, function (err, docs) {
+                if (err) {
+                    res.status(404).send('search cart wrong.');
+                } else {
+                    res.render('cart', {carts: docs});
+                }
+            })
+        }
     });
 
     app.get('/addToCart/:id', function (req, res) {

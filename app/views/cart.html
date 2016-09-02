@@ -5,11 +5,50 @@
     <title>Cart</title>
     <link type="text/css" rel="stylesheet" href="css/common.css">
     <script type="text/javascript" src="scripts/lib.js"></script>
-    <script type="text/javascript" src="scripts/common.js"></script>
 </head>
 <body>
 <div class="cart-container">
     <h2>购物车</h2>
+    <div>
+        <a href="home">商品页</a>
+        <a href="logout">退出</a>
+    </div>
+    <table>
+        <tr>
+            <td>
+                <input class="cart-select-all" type="checkbox">
+                <span>全选</span>
+            </td>
+            <td>商品名称</td>
+            <td>价格</td>
+            <td>数量</td>
+            <td>操作</td>
+        </tr>
+        <% for (var idx=0; idx < carts.length; idx++) { var cartItem = carts[idx]; %>
+        <tr>
+            <td><input class="checkbox-item" type="checkbox"></td>
+            <td>
+                <img class="cart-img" src="images/<%= cartItem.cImgSrc %>">
+                <span class="cart-name"><%= cartItem.cName %></span>
+            </td>
+            <td>$<%= cartItem.cPrice %></td>
+            <td>
+                <a href="#">+</a>
+                <input type="text" value="<%= cartItem.cQuantity %>">
+                <a href="#">-</a>
+            </td>
+            <td><a href="#">删除</a></td>
+        </tr>
+        <% } %>
+    </table>
+    <div class="cart-result">
+        <div>
+            总计: <span>$0.00</span>
+        </div>
+        <br>
+        <a href="#">结算</a>
+    </div>
 </div>
 </body>
+<script type="text/javascript" src="scripts/common.js"></script>
 </html>
