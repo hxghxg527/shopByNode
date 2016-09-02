@@ -103,40 +103,24 @@ function addCommodity() {
         checkboxItem = $('.checkbox-item');
 
     cartSelectAll.on('click', function () {
-        var checkedValue = $(this).prop('checked');
-
-        if (checkedValue) {
-            checkboxItem.prop('checked', true);
-        } else {
-            checkboxItem.prop('checked', false);
-        }
-
+        checkboxItem.prop('checked', $(this).is(':checked'));
         calculateTotalPrice();
     });
 
     checkboxItem.on('click', function () {
-        var checkedValue = $(this).prop('checked');
+        var isCheckedAll = $('.checkbox-item:not(:checked)').length == 0 ? true : false;
 
-        if (checkedValue) {
-            var selectedCheckbox = $('.checkbox-item:checked');
-
-            if (selectedCheckbox.length == checkboxItem.length) {
-                cartSelectAll.prop('checked', true);
-            }
-        } else {
-            cartSelectAll.prop('checked', false);
-        }
-
+        cartSelectAll.prop('checked', isCheckedAll);
         calculateTotalPrice();
     });
 
     function calculateTotalPrice() {
-        var selectedTr = $('.checkbox-item:checked').parents('.cart-tr-item');
-        var totalPrice = 0;
+        var selectedTr = $('.checkbox-item:checked').parents('.cart-tr-item'),
+            totalPrice = 0;
 
         $.each(selectedTr, function (idx) {
-            var _price = $(this).find('.cart-td-price').text();
-            var _quantity = $(this).find('.cart-td-quantity').val();
+            var _price = $(this).find('.cart-td-price').text(),
+                _quantity = $(this).find('.cart-td-quantity').val();
 
             totalPrice += _price * _quantity;
         });
@@ -146,6 +130,7 @@ function addCommodity() {
         } else if (!/(\.[0-9]{2})$/g.test(totalPrice)) {
             totalPrice += '.00';
         }
+
         $('.cart-result-total-price').text(totalPrice);
     }
 })();
