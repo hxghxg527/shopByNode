@@ -31,11 +31,12 @@
                 <img class="cart-img" src="images/<%= cartItem.cImgSrc %>">
                 <span class="cart-name"><%= cartItem.cName %></span>
             </td>
-            <td>$<span class="cart-td-price"><%= cartItem.cPrice %></span></td>
+            <td>￥<span class="cart-td-price"><%= cartItem.cPrice %></span></td>
             <td>
-                <a href="#">+</a>
-                <input class="cart-td-quantity" type="text" value="<%= cartItem.cQuantity %>">
-                <a href="#">-</a>
+                <a class="cart-add-quantity" href="#">+</a>
+                <input class="cart-td-quantity" type="text" data-cart-id="<%= cartItem._id %>"
+                       value="<%= cartItem.cQuantity %>">
+                <a class="cart-minus-quantity" href="#">-</a>
             </td>
             <td><a href="#">删除</a></td>
         </tr>
@@ -43,7 +44,7 @@
     </table>
     <div class="cart-result">
         <div>
-            总计: $<span class="cart-result-total-price">0.00</span>
+            总计: ￥<span class="cart-result-total-price">0.00</span>
         </div>
         <br>
         <a href="#">结算</a>

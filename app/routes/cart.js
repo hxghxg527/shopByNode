@@ -77,4 +77,23 @@ module.exports = function (app) {
         });
     });
 
+    app.post('/cart/updateCartQuantity', function (req, res) {
+        var Cart = global.dbHelper.getModel('cart');
+
+        Cart.update({
+                _id: req.body.cartId
+            }, {
+                $set: {
+                    cQuantity: req.body.quantity
+                }
+            }, function (err, docs) {
+                if (err) {
+                    res.status(500).send('update cart quantity failed...');
+                } else {
+                    res.status(200).send('update cart quantity success...')
+                }
+            }
+        );
+    });
+
 };
