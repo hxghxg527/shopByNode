@@ -102,7 +102,8 @@ function addCommodity() {
     var cartSelectAll = $('.cart-select-all'),
         checkboxItem = $('.checkbox-item'),
         cartAddQuantity = $('.cart-add-quantity'),
-        cartMinusQuantity = $('.cart-minus-quantity');
+        cartMinusQuantity = $('.cart-minus-quantity'),
+        removeCartItem = $('.remove-cart-item');
 
     cartSelectAll.on('click', function () {
         checkboxItem.prop('checked', $(this).is(':checked'));
@@ -208,6 +209,31 @@ function addCommodity() {
             }, 1000);
         }
     });
+
+    removeCartItem.on('click', function () {
+        var self = this;
+        var cartId = $(this).attr('data-cart-id');
+
+        $.ajax({
+            type: "PUT",
+            url: "/cart/delete",
+            header: {
+                "Content-Type": "application/json"
+            },
+            data: {
+                cartId: cartId
+            }
+        }).then(function (data) {
+            var currentTrItem = $(self).parents('.cart-tr-item');
+
+            currentTrItem.detach();
+
+            calculateTotalPrice();
+        }, function () {
+
+        });
+    });
+
 })();
 
 

@@ -13,7 +13,7 @@
         <a href="home">商品页</a>
         <a href="logout">退出</a>
     </div>
-    <table>
+    <table class="cart-table-container">
         <tr>
             <td>
                 <input class="cart-select-all" type="checkbox" name="selectAll" value="">
@@ -39,7 +39,7 @@
                        value="<%= cartItem.cQuantity %>">
                 <a class="cart-minus-quantity" href="#">-</a>
             </td>
-            <td><a href="#">删除</a></td>
+            <td><a class="remove-cart-item" data-cart-id="<%= cartItem._id %>" href="#">删除</a></td>
         </tr>
         <% } %>
     </table>

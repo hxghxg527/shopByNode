@@ -90,10 +90,24 @@ module.exports = function (app) {
                 if (err || docs.nModified == 0) {
                     res.status(500).send('update cart quantity failed...');
                 } else {
-                    res.status(200).send('update cart quantity success...')
+                    res.status(200).send('update cart quantity success...');
                 }
             }
         );
+    });
+
+    app.put('/cart/delete', function (req, res) {
+        var Cart = global.dbHelper.getModel('cart');
+
+        Cart.remove({
+            _id: req.body.cartId
+        }, function (err, docs) {
+            if (err || docs.nModified == 0) {
+                res.status(500).send('remove cart failed...');
+            } else {
+                res.status(200).send('remove cart success...');
+            }
+        });
     });
 
 };
