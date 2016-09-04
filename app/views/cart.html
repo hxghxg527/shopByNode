@@ -34,7 +34,8 @@
             <td>￥<span class="cart-td-price"><%= cartItem.cPrice %></span></td>
             <td>
                 <a class="cart-add-quantity" href="#">+</a>
-                <input class="cart-td-quantity" type="text" data-cart-id="<%= cartItem._id %>"
+                <input class="cart-td-quantity" type="text" data-cart-index="<%= idx %>"
+                       data-cart-id="<%= cartItem._id %>"
                        value="<%= cartItem.cQuantity %>">
                 <a class="cart-minus-quantity" href="#">-</a>
             </td>

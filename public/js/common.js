@@ -136,22 +136,22 @@ function addCommodity() {
         $('.cart-result-total-price').text(totalPrice);
     }
 
-    var updateQuantityTimer = null;
+    var updateQuantityTimerObj = {};
 
     cartAddQuantity.on('click', function () {
         var cartTdQuantity = $(this).siblings('.cart-td-quantity');
         var newQuantity = parseInt(cartTdQuantity.val(), 10) + 1;
         var cartId = cartTdQuantity.attr('data-cart-id');
+        var cartIndex = cartTdQuantity.attr('data-cart-index');
 
         cartTdQuantity.val(newQuantity);
 
-        if (updateQuantityTimer) {
-            clearTimeout(updateQuantityTimer);
-            updateQuantityTimer = null;
+        if (updateQuantityTimerObj[cartIndex]) {
+            clearTimeout(updateQuantityTimerObj[cartIndex]);
+            updateQuantityTimerObj[cartIndex] = null;
         }
 
-        updateQuantityTimer = setTimeout(function () {
-            console.log('add');
+        updateQuantityTimerObj[cartIndex] = setTimeout(function () {
             $.ajax({
                 type: "POST",
                 url: "/cart/updateCartQuantity",
@@ -163,7 +163,7 @@ function addCommodity() {
                     quantity: newQuantity
                 }
             }).then(function (data) {
-
+                calculateTotalPrice();
             }, function () {
                 alert('add cart quantity failed...');
             });
@@ -175,18 +175,19 @@ function addCommodity() {
         var newQuantity = 0;
         var oldQuantity = parseInt(cartTdQuantity.val(), 10);
         var cartId = cartTdQuantity.attr('data-cart-id');
+        var cartIndex = cartTdQuantity.attr('data-cart-index');
 
         if (oldQuantity > 0) {
-            if (updateQuantityTimer) {
-                clearTimeout(updateQuantityTimer);
-                updateQuantityTimer = null;
+            if (updateQuantityTimerObj[cartIndex]) {
+                clearTimeout(updateQuantityTimerObj[cartIndex]);
+                updateQuantityTimerObj[cartIndex] = null;
             }
+
             newQuantity = oldQuantity - 1;
 
             cartTdQuantity.val(newQuantity);
 
-            updateQuantityTimer = setTimeout(function () {
-                console.log('minus');
+            updateQuantityTimerObj[cartIndex] = setTimeout(function () {
                 $.ajax({
                     type: "POST",
                     url: "/cart/updateCartQuantity",
@@ -198,7 +199,7 @@ function addCommodity() {
                         quantity: newQuantity
                     }
                 }).then(function (data) {
-
+                    calculateTotalPrice();
                 }, function () {
                     alert('add cart quantity failed...');
                 });
