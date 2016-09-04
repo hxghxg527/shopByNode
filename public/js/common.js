@@ -177,7 +177,7 @@ function addCommodity() {
         var cartId = cartTdQuantity.attr('data-cart-id');
         var cartIndex = cartTdQuantity.attr('data-cart-index');
 
-        if (oldQuantity > 0) {
+        if (oldQuantity > 1) {
             if (updateQuantityTimerObj[cartIndex]) {
                 clearTimeout(updateQuantityTimerObj[cartIndex]);
                 updateQuantityTimerObj[cartIndex] = null;
