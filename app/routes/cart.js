@@ -87,7 +87,7 @@ module.exports = function (app) {
                     cQuantity: req.body.quantity
                 }
             }, function (err, docs) {
-                if (err) {
+                if (err || docs.nModified == 0) {
                     res.status(500).send('update cart quantity failed...');
                 } else {
                     res.status(200).send('update cart quantity success...')

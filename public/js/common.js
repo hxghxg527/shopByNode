@@ -165,7 +165,8 @@ function addCommodity() {
             }).then(function (data) {
                 calculateTotalPrice();
             }, function () {
-                alert('add cart quantity failed...');
+                //alert('add cart quantity failed...');
+                location.href = 'cart';
             });
         }, 1000);
     });
@@ -201,7 +202,8 @@ function addCommodity() {
                 }).then(function (data) {
                     calculateTotalPrice();
                 }, function () {
-                    alert('add cart quantity failed...');
+                    // alert('minus cart quantity failed...');
+                    location.href = 'cart';
                 });
             }, 1000);
         }
